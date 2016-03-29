@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="Jiancheng">
+  <title>part1</title>
+  <script type="text/javascript">
+    var colors = ["aqua", "black", "cyan", "gold",
+      "orange", "pink", "red", "silver", "yellow"
+    ];
+
+    function do_game() {
+      var random_pick = Math.floor(Math.random() * colors.length);
+      var secret = colors[random_pick];
+      var announce = "I'm thinking one of the following colors:\n\n";
+      announce += colors.join(", ");
+      announce += "\n\nDo you want to guess one?";
+      announce += "\n\nThe indeed answer is " + secret + ".";
+      var finished = false;
+      var guesses = 0;
+      while (!finished) {
+        guesses++;
+        var answer = prompt(announce);
+        alert("Your input is " + answer +
+          ", you have already tried " + guesses + " times.");
+        finished = answer == secret;
+      }
+      var myBody = document.getElementsByTagName("body")[0];
+      myBody.style.background = secret;
+    }
+  </script>
+</head>
+
+<body onload="do_game()">
+
+</body>
+
+</html>

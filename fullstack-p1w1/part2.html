@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Dating Web Site Assessment</title>
+  <style>
+    fieldset {
+      background: lightyellow;
+      border: 10px solid yellow;
+      margin-bottom: 10px;
+      width: 720px;
+    }
+
+    label {
+      width: 180px;
+      display: inline-block;
+      vertical-align: top;
+      text-align: right;
+    }
+
+    .choose {
+      width: auto;
+    }
+
+    .lefttag {
+      text-align: center;
+      vertical-align: top;
+      background: rgb(185, 1, 73);
+      color: white;
+    }
+
+    .righttag {
+      text-align: center;
+      vertical-align: top;
+      background: rgb(160, 15, 238);
+      color: white;
+    }
+
+    textarea {
+      width: 360px;
+      height: 50px;
+    }
+  </style>
+  <script>
+    window.onload = function() {
+      var files = document.querySelectorAll("input[type=file]");
+      files[0].addEventListener("change", function(e) {
+        if (this.files && this.files[0]) {
+          var reader = new FileReader();
+          reader.onload = function(e) {
+            document.getElementById("preview").setAttribute("src", e.target.result);
+          }
+          reader.readAsDataURL(this.files[0]);
+        }
+      });
+    }
+  </script>
+</head>
+
+<body>
+  <h1>Please input your detals for our dating website!</h1>
+  <form method="post" enctype="multipart/form-data" action="http://ihome.ust.hk/~rossiter/cgi-bin/show_everything.php">
+    <fieldset>
+      <legend>Your face</legend>
+      <label for="avatar">Your image:</label>
+      <input type="file" id="avatar" name="avatar" required>
+      <br>
+      <label for="preview">Image preview:</label>
+      <img id="preview" width="100">
+      <br>
+    </fieldset>
+    <fieldset>
+      <legend>Your general details</legend>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <br>
+      <label for="gender">Gender:</label>
+      <input type="radio" id="gender" name="gender" value="male" required> <span class="choose">Male</span>
+      <input type="radio" id="gender" name="gender" value="female" required> <span class="choose">Female</span>
+      <br>
+      <label for="age">Age:</label>
+      <input type="number" id="age" name="age" required>
+      <br>
+      <label for="birth">Date of birth:</label>
+      <input type="date" id="birth" name="birth">
+      <br>
+      <label for="color">Favorate color:</label>
+      <input type="color" id="color" name="color">
+      <br>
+      <label for="country">Country:</label>
+      <select id="country" name="country">
+        <option value="no">No selection</option>
+        <option value="cn">China</option>
+        <option value="fr">France</option>
+        <option value="jp">Japan</option>
+        <option value="us">USA</option>
+        <option value="uk">UK</option>
+      </select>
+      <br>
+    </fieldset>
+    <fieldset>
+      <legend>Your indicators</legend>
+      <label for="height">Height:</label>
+      <span class="lefttag">Short</span>
+      <input type="range" id="height" name="height" min="0" max="100">
+      <span class="righttag">Tall</span>
+      <br>
+      <label for="salary">Salary:</label>
+      <span class="lefttag">Poor</span>
+      <input type="range" id="salary" name="salary" min="0" max="100">
+      <span class="righttag">Rich</span>
+      <br>
+    </fieldset>
+    <fieldset>
+      <legend>Your Contact Information</legend>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+      <br>
+      <label for="mobile">Mobile:</label>
+      <input type="tel" id="mobile" name="mobile">
+      <br>
+      <label for="address">Address:</label>
+      <textarea id="address" name="address"></textarea>
+      <br>
+      <label for="contact">Method to contact you:</label>
+      <input type="checkbox" id="contact" name="contact" value="email"> <span class="choose">Email</span>
+      <input type="checkbox" id="contact" name="contact" value="whatsapp"> <span class="choose">Whatsapp</span>
+      <input type="checkbox" id="contact" name="contact" value="inapp"> <span class="choose">In-app chat</span>
+      <br>
+    </fieldset>
+    <input type="submit" name="submit" id="submit" value="Submit">
+  </form>
+
+</body>
+
+</html>

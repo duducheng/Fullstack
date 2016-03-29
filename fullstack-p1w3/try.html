@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+
+<head>
+  <script>
+    function counter() {
+      var cnt = 0;
+      return function() {
+        cnt++;
+        alert(cnt);
+      }
+    }
+    var count = counter(); //构造之后，count函数和counter再无关系，只和counter返回的函数相关
+    counter()();
+    counter()();
+    count();
+    count();
+    count();
+  </script>
+</head>
+
+</html>
