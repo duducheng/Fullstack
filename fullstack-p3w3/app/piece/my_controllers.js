@@ -1,50 +1,18 @@
 'use strict';
 
-angular.module('confusionApp', [])
+angular.module('confusionApp')
 
-.controller('MenuController', ['$scope', function($scope) {
+.controller('MenuController', ['$scope', 'menuFactory', function($scope, menuFactory) {
 
   $scope.tab = 1;
   $scope.filtText = '';
   $scope.showDetails = false;
 
-  $scope.dishes = [{
-    name: 'Uthapizza',
-    image: 'images/uthapizza.png',
-    category: 'mains',
-    label: 'Hot',
-    price: '4.99',
-    description: 'A unique combination of Indian Uthappam (pancake) and Italian pizza, topped with Cerignola olives, ripe vine cherry tomatoes, Vidalia onion, Guntur chillies and Buffalo Paneer.',
-    comment: ''
-  }, {
-    name: 'Zucchipakoda',
-    image: 'images/zucchipakoda.png',
-    category: 'appetizer',
-    label: '',
-    price: '1.99',
-    description: 'Deep fried Zucchini coated with mildly spiced Chickpea flour batter accompanied with a sweet-tangy tamarind sauce',
-    comment: ''
-  }, {
-    name: 'Vadonut',
-    image: 'images/vadonut.png',
-    category: 'appetizer',
-    label: 'New',
-    price: '1.99',
-    description: 'A quintessential ConFusion experience, is it a vada or is it a donut?',
-    comment: ''
-  }, {
-    name: 'ElaiCheese Cake',
-    image: 'images/elaicheesecake.png',
-    category: 'dessert',
-    label: '',
-    price: '2.99',
-    description: 'A delectable, semi-sweet New York Style Cheese Cake, with Graham cracker crust and spiced with Indian cardamoms',
-    comment: ''
-  }];
+  $scope.dishes = menuFactory.getDishes();
 
   $scope.select = function(setTab) {
     $scope.tab = setTab;
-    
+
     if (setTab === 2) {
       $scope.filtText = "appetizer";
     } else if (setTab === 3) {
@@ -85,15 +53,16 @@ angular.module('confusionApp', [])
 
   $scope.channels = channels;
   $scope.invalidChannelSelection = false;
+
 }])
 
 .controller('FeedbackController', ['$scope', function($scope) {
+
   $scope.sendFeedback = function() {
+
     console.log($scope.feedback);
 
-    // check the options
-    if ($scope.feedback.agree && ($scope.feedback.mychannel == "") && !$scope.feedback.mychannel) {
-
+    if ($scope.feedback.agree && ($scope.feedback.mychannel == "")) {
       $scope.invalidChannelSelection = true;
       console.log('incorrect');
     } else {
@@ -106,9 +75,49 @@ angular.module('confusionApp', [])
         email: ""
       };
       $scope.feedback.mychannel = "";
-
       $scope.feedbackForm.$setPristine();
       console.log($scope.feedback);
     }
   };
-}]);
+}])
+
+.controller('DishDetailController', ['$scope', '$stateParams', 'menuFactory', function($scope, $stateParams, menuFactory) {
+
+  $scope.dish = menuFactory.getDish(parseInt($stateParams.id, 10));
+
+  $scope.sortby = "";
+
+}])
+
+.controller('DishCommentController', ['$scope', function($scope) {
+
+  //Step 1: Create a JavaScript object to hold the comment from the form
+  $scope.mycomment = {
+    author: "",
+    rating: 5,
+    comment: "",
+    date: new Date().toISOString(),
+  };
+
+  $scope.submitComment = function() {
+
+    // //Step 2: This is how you record the date
+    $scope.mycomment.date = new Date().toISOString();
+
+    // // Step 3: Push your comment into the dish's comment array
+    $scope.dish.comments.push($scope.mycomment);
+
+    //Step 4: reset your form to pristine
+    $scope.commentForm.$setPristine();
+
+    //Step 5: reset your JavaScript object that holds your comment
+    $scope.mycomment = {
+      author: "",
+      rating: 5,
+      comment: "",
+      date: new Date().toISOString(),
+    };
+  }
+}])
+
+;
