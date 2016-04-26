@@ -50,6 +50,36 @@
           "comment": "update, it's good!",
           "author": "jiancheng",
           "date": "2016-04-14T22:30:23.203Z"
+        },
+        {
+          "rating": 5,
+          "comment": "asdf",
+          "author": "duducheng",
+          "date": "2016-04-26T10:51:29.433Z"
+        },
+        {
+          "rating": "3",
+          "comment": "awful!",
+          "author": "duducheng",
+          "date": "2016-04-26T11:37:10.656Z"
+        },
+        {
+          "rating": "3",
+          "comment": "bad!",
+          "author": "Jiancheng",
+          "date": "2016-04-26T11:38:43.332Z"
+        },
+        {
+          "rating": 5,
+          "comment": "Very good!!",
+          "author": "duducheng",
+          "date": "2016-04-26T12:30:58.076Z"
+        },
+        {
+          "rating": 5,
+          "comment": "",
+          "author": "Jaincheng",
+          "date": "2016-04-26T12:44:34.574Z"
         }
       ]
     },
@@ -100,7 +130,7 @@
       "image": "images/vadonut.png",
       "category": "appetizer",
       "label": "New",
-      "price": "1.99",
+      "price": 1.99,
       "description": "A quintessential ConFusion experience, is it a vada or is it a donut?",
       "comments": [
         {
@@ -132,6 +162,18 @@
           "comment": "It's your birthday, we're gonna party!",
           "author": "25 Cent",
           "date": "2011-12-02T17:57:28.556094Z"
+        },
+        {
+          "rating": 5,
+          "comment": "I like it!",
+          "author": "jiand",
+          "date": "2016-04-26T12:17:20.999Z"
+        },
+        {
+          "rating": "4",
+          "comment": "What about it?",
+          "author": "asdfdducheng",
+          "date": "2016-04-26T12:17:41.490Z"
         }
       ]
     },
@@ -179,6 +221,12 @@
           "author": "Jiancheng",
           "date": "2016-04-17T19:26:52.749Z",
           "comment": "Awful"
+        },
+        {
+          "rating": 5,
+          "comment": "I will be there again!",
+          "author": "jiancheng",
+          "date": "2016-04-26T12:47:49.881Z"
         }
       ]
     }
