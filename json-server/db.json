@@ -233,6 +233,12 @@
           "comment": "I will be there again!",
           "author": "jiancheng",
           "date": "2016-04-26T12:47:49.881Z"
+        },
+        {
+          "rating": 5,
+          "comment": "it should work correctly",
+          "author": "duduchneg",
+          "date": "2016-04-28T20:34:22.687Z"
         }
       ]
     }
