@@ -1,4 +1,4 @@
 # Fullstack
 Web development playground
 
-This repository is the playground to practice my skills of web development.
+It's the repository for the whole Coursera [Full Stack Specialization](https://www.coursera.org/specializations/full-stack).
